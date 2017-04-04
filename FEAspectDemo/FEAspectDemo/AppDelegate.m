@@ -7,7 +7,9 @@
 //
 
 #import "AppDelegate.h"
-#import "UIViewController+AOP.h"
+//#import "UIViewController+AOP.h"
+#import "AppDelegate+MobEvent.h"
+#import "Aspects.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +20,25 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    NSDictionary *config = @{
+                             @"ViewController": @{
+                                     MobEventClassDescription: @"首页",
+                                     MobEventClassEvents: @[
+                                             @{
+                                                 MobEventClassEventName: @"首页Didload进入",
+                                                 MobEventSelectorName: @"viewDidLoad",
+                                                 MobEventSelectorBlock: ^(id<AspectInfo> aspectInfo) {
+                                                     NSLog(@"Config代理执行");
+                                                 },
+                                                 }
+                                             ]
+                                     }
+                             };
+    
+    
+    [self setupAnalytics:config];
+    
     return YES;
 }
 
