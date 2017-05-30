@@ -19,16 +19,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self aspect_hookSelector:@selector(viewDidAppear:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> info) {
-        NSLog(@"viewDidAppear执行完成之后的回调:%@",info);
+        NSLog(@"viewDidAppear---执行完成之后的回调:%@",info);
     } error:nil];
     
     [self aspect_hookSelector:@selector(buyAction:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> info,NSDictionary *dict){
-        NSLog(@"购买的参数:%@",info.arguments);
+        NSLog(@"FlyElephant---购买的参数:%@",info.arguments);
     } error:nil];
     
     [self aspect_hookSelector:@selector(goBuy:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> info,NSDictionary *dict){
-        NSLog(@"参数:%@",info.arguments);
-        NSLog(@"参数:%@",dict);
+        NSLog(@"FlyElephant---参数:%@",info.arguments);
+        NSLog(@"FlyElephant---参数:%@",dict);
     } error:nil];
     
 }

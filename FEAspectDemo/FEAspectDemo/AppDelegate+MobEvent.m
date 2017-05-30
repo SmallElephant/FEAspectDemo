@@ -30,6 +30,7 @@ typedef void (^AspectHandlerBlock)(id<AspectInfo> aspectInfo);
                 [clazz aspect_hookSelector:selekor
                                withOptions:AspectPositionAfter
                                 usingBlock:^(id<AspectInfo> aspectInfo) {
+                                    // 也可以不设置Block
                                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                                         block(aspectInfo);
                                     });
